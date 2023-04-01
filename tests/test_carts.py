@@ -9,5 +9,3 @@ def test_create_new_cart(app_config):
     json = convert_to_json.add_new_cart(15, '2023-01-02', [{"productId":5,"quantity":1},{"productId":1,"quantity":5}])
     carts.create_new_cart(app_config.base_url, json, headers)
 
-def test_delete_cart(app_config):
-    pass

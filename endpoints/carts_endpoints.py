@@ -8,3 +8,9 @@ class Carts(BaseApi):
         response = self.post_request(url + self.endpoint, json_data, token)
         self.check_status_code(response, 200)
         print(response.status_code)
+
+    def get_sorted_result(self, url, params):
+        response = self.get_request(url + self.endpoint, params)
+        self.check_status_code(response, 200)
+        print(response.status_code)
+        print(response.text)

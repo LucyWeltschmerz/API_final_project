@@ -59,3 +59,20 @@ def test_get_single(app_config):
     data = response.json()
     value = data["userId"]
     assert value == 3
+
+
+def test_update_product(app_config):
+    carts = Carts()
+    headers = {"Content-Type": "application/json; charset=utf-8"}
+    json = convert_to_json.add_new_cart(3, "2023-02-03", [{"userId": 3}, { "date": 2019-12-10},
+                                                          {"products": [{"productId": 1, "quantity": 3}]}])
+    carts.update_product(app_config.base_url, json, headers)
+
+def test_update_specific_element(app_config):
+    carts = Carts()
+    json_data = {
+                    "userId": 4,
+                    "date": "2019-12-10",
+                    "products": [{"productId": 1, "quantity": 3}]
+                    }
+    carts.update_specific_element(app_config.base_url, json_data)

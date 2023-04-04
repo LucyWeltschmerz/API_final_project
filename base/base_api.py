@@ -40,6 +40,17 @@ class BaseApi:
         response = requests.put(url, json_data, headers=headers, verify=False)
         return response
 
+    def patch_request(self, url, json_data):
+        """
+        Use this method to send the patch request
+        :param url: The request URL
+        :param json_data: The JSON data to send with the request (OPTIONAL)
+        :param headers: The request headers (OPTIONAL)
+        :return: response
+        """
+        response = requests.patch(url, json_data, verify=False)
+        return response
+
     def delete_request(self, url, json_data, headers):
         """
         Use this method to send the delete request

@@ -32,6 +32,21 @@ def test_get_in_date_range(app_config):
     carts.check_status_code(response, 200)
     data = response.json()
     assert len(data) == 7
+    
+    
+    
+def test_limit_results(app_config):
+    carts = Carts()
+    headers = {"Authorization": app_config.token}
+    params = {
+        "limit": "5",
+        "startdate": "2019-12-10",
+        "enddate": "2020-10-10"
+    }
+    response = carts.get_request(app_config.base_url + carts.endpoint, params, headers)
+    carts.check_status_code(response, 200)
+    data = response.json()
+    assert len(data) == 5
 
     
 def test_get_single(app_config):

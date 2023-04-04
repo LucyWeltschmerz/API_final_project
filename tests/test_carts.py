@@ -19,3 +19,16 @@ def test_get_sorted_results(app_config):
         "enddate": "2023-02-04"
     }
     carts.get_sorted_result(app_config.base_url, params)
+
+
+def test_get_in_date_range(app_config):
+    carts = Carts()
+    headers = {"Authorization": app_config.token}
+    params = {
+        "startdate": "2019-12-10",
+        "enddate": "2020-10-10"
+    }
+    response = carts.get_request(app_config.base_url + carts.endpoint, params, headers)
+    carts.check_status_code(response, 200)
+    data = response.json()
+    assert len(data) == 7

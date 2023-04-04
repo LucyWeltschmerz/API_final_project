@@ -32,3 +32,15 @@ def test_get_in_date_range(app_config):
     carts.check_status_code(response, 200)
     data = response.json()
     assert len(data) == 7
+
+    
+def test_get_single(app_config):
+    carts = Carts()
+    headers = {"Authorization": app_config.token}
+    params = None
+    path_param = "/5"
+    response = carts.get_request(app_config.base_url + carts.endpoint + path_param, params, headers)
+    carts.check_status_code(response, 200)
+    data = response.json()
+    value = data["userId"]
+    assert value == 3

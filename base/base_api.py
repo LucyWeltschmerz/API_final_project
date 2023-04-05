@@ -40,7 +40,7 @@ class BaseApi:
         response = requests.put(url, json_data, headers=headers, verify=False)
         return response
 
-    def patch_request(self, url, json_data):
+    def patch_request(self, url, json_data, headers):
         """
         Use this method to send the patch request
         :param url: The request URL
@@ -48,7 +48,7 @@ class BaseApi:
         :param headers: The request headers (OPTIONAL)
         :return: response
         """
-        response = requests.patch(url, json_data, verify=False)
+        response = requests.patch(url, json=json_data, headers=headers, verify=False)
         return response
 
     def delete_request(self, url, json_data, headers):
@@ -73,6 +73,9 @@ class BaseApi:
 
         assert response.status_code == expected_status_code
 
+    def check_response_body_by_json_value(self, response, response_key, expected_value):
+
+        assert response.json()[response_key] == expected_value
     def get_json_value_by_key(self, response, key):
         """
         :param response:

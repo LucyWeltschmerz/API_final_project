@@ -51,7 +51,7 @@ class BaseApi:
         response = requests.patch(url, json=json_data, headers=headers, verify=False)
         return response
 
-    def delete_request(self, url, json_data, headers):
+    def delete_request(self, url, **kwargs):
         """
         Use this method to send the delete request
         :param json_data:
@@ -60,7 +60,7 @@ class BaseApi:
         :return: response
         """
 
-        response = requests.delete(url, json=json_data, headers=headers)
+        response = requests.delete(url, **kwargs)
         return response
 
     def check_status_code(self, response, expected_status_code):

@@ -13,7 +13,6 @@ class Carts(BaseApi):
         self.check_response_body_by_json_value(response, 'id', 5)
         self.check_response_body_by_json_value(response, 'userId', 3)
 
-
     def get_limited_results(self, url, params):
         response = self.get_request(url + self.endpoint, params)
         self.check_status_code(response, 200)
@@ -36,7 +35,6 @@ class Carts(BaseApi):
     def update_cart(self, url, cart_id, json_data, headers):
         response = self.put_request(url + self.endpoint + '/' + str(cart_id), json_data, headers)
         self.check_status_code(response, 200)
-        print("response-body: ", response.text)
         self.check_response_body_by_json_value(response,'userId', 3)
 
     def update_specific_element(self, url, cart_id, json_data, headers):
